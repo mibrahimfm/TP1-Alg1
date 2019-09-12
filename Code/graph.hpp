@@ -8,9 +8,9 @@ private:
     /* data */
 public:
     graph(int*, int**);
-    void swap(int, int);
-    void youngestCommander(int);
-    void meeting();
+    static void swap(int, int);
+    static void youngestCommander(int);
+    static void meeting();
 };
 
 
