@@ -1,13 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <sstream>
 
 using std::string;
-using std::stringstream;
 using std::ifstream;
 using std::ofstream;
-using std::cerr;
 using std::cin;
 using std::cout;
 using std::endl;
@@ -20,6 +17,7 @@ int main(int argc, char** argv){
 
     int qtParticipants, qtRelations, qtInstructions;
     int* ages;
+    int** relations;
     string reader;
 
     if (input.is_open()) {
@@ -32,7 +30,10 @@ int main(int argc, char** argv){
             cout << ages[i] << " ";
         }
 
-        int relations[qtRelations][2];
+        relations = new int*[qtRelations];
+        for(int i = 0; i < qtRelations; i++){
+            relations[i] = new int[2];
+        }
 
         for(int j = 0; j < qtRelations; j++){
             input >> relations[j][0] >> relations[j][1];
