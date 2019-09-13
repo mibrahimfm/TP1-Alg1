@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "graph.hpp"
+#include "Graph.hpp"
 
 using std::string;
 using std::ifstream;
@@ -40,18 +40,22 @@ int main(int argc, char** argv){
         for(int j = 0; j < qtRelations; j++)
             input >> relations[j][0] >> relations[j][1];
 
+        Graph g(ages, relations, qtParticipants, qtRelations);
+        g.printGraph(qtParticipants+1);
+
+
         for(int k = 0; k < qtInstructions; k++){
             input >> func;
             if(func == 'S'){
                 input >> swap1 >> swap2;
-                graph::swap(swap1, swap2);
+                Graph::swap(swap1, swap2);
             }
             else if(func == 'C'){
                 input >> ageCom;
-                graph::youngestCommander(ageCom);
+                Graph::youngestCommander(ageCom);
             }
             else{
-                graph::meeting();
+                Graph::meeting();
             }
         }
     }

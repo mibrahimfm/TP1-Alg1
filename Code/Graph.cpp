@@ -1,0 +1,50 @@
+#include "Graph.hpp"
+
+Graph::Graph(int* ages, int** relations, int qtParticipants, int qtRelations){
+    this->adjList = vector<vector<Participant>>(qtParticipants+1);
+    for(int i = 1; i <= qtParticipants; i++){
+        Participant p;
+        p.id = i; p.age = ages[i-1];
+        adjList[i].push_back(p);
+    }
+
+    for(int j = 0; j < qtRelations; j++){
+        Participant p1, p2;
+        std::cout << this->adjList[relations[j][0]][0].id << " " << this->adjList[relations[j][1]][0].id << std::endl;
+        if(!adjList[relations[j][0]].empty()){
+            p1 = adjList[relations[j][0]][0];
+        }
+        if(!adjList[relations[j][1]].empty()){
+            p2 = adjList[relations[j][1]][0];
+        }
+        addEdge(p1, p2);
+    }
+
+}
+
+void Graph::addEdge(Participant p1, Participant p2){
+    this->adjList[p1.id].push_back(p2);
+}
+
+void Graph::printGraph(int V) { 
+    for (int v = 0; v < V; ++v) 
+    { 
+        std::cout << "\n Adjacency list of vertex "
+             << v << "\n head "; 
+        for (auto x : this->adjList[v]) 
+           std::cout << "-> " << x.id; 
+        printf("\n"); 
+    } 
+} 
+
+void Graph::swap(int, int){
+    std::cout << "Swap Succ" << std::endl;
+}
+
+void Graph::youngestCommander(int){
+    std::cout << "Comm Succ" << std::endl;
+}
+
+void Graph::meeting(){
+    std::cout << "Meet Succ" << std::endl;
+}
