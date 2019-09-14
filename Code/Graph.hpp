@@ -17,10 +17,10 @@ private:
 public:
     vector<vector<Participant>> adjList;
     Graph(int*, int**, int, int);
-    void printGraph(int);
-    static void swap(int, int);
-    static void youngestCommander(int);
-    static void meeting();
+    void printGraph();
+    void swap(int, int);
+    void youngestCommander(int);
+    void meeting();
 };
 
 

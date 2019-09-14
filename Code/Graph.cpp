@@ -10,7 +10,6 @@ Graph::Graph(int* ages, int** relations, int qtParticipants, int qtRelations){
 
     for(int j = 0; j < qtRelations; j++){
         Participant p1, p2;
-        std::cout << this->adjList[relations[j][0]][0].id << " " << this->adjList[relations[j][1]][0].id << std::endl;
         if(!adjList[relations[j][0]].empty()){
             p1 = adjList[relations[j][0]][0];
         }
@@ -26,9 +25,8 @@ void Graph::addEdge(Participant p1, Participant p2){
     this->adjList[p1.id].push_back(p2);
 }
 
-void Graph::printGraph(int V) { 
-    for (int v = 0; v < V; ++v) 
-    { 
+void Graph::printGraph() { 
+    for (unsigned int v = 1; v < this->adjList.size(); ++v){ 
         std::cout << "\n Adjacency list of vertex "
              << v << "\n head "; 
         for (auto x : this->adjList[v]) 
@@ -41,8 +39,14 @@ void Graph::swap(int, int){
     std::cout << "Swap Succ" << std::endl;
 }
 
-void Graph::youngestCommander(int){
-    std::cout << "Comm Succ" << std::endl;
+void Graph::youngestCommander(int subordinate){
+    for (unsigned int v = 1; v < this->adjList.size(); ++v){  
+        for (auto x : this->adjList[v]) 
+           if(x.id == subordinate){
+               std::cout << "C " << this->adjList[v][0].age << std::endl;
+               return;
+           }
+    }
 }
 
 void Graph::meeting(){

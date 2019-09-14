@@ -41,21 +41,19 @@ int main(int argc, char** argv){
             input >> relations[j][0] >> relations[j][1];
 
         Graph g(ages, relations, qtParticipants, qtRelations);
-        g.printGraph(qtParticipants+1);
-
 
         for(int k = 0; k < qtInstructions; k++){
             input >> func;
             if(func == 'S'){
                 input >> swap1 >> swap2;
-                Graph::swap(swap1, swap2);
+                g.swap(swap1, swap2);
             }
             else if(func == 'C'){
                 input >> ageCom;
-                Graph::youngestCommander(ageCom);
+                g.youngestCommander(ageCom);
             }
             else{
-                Graph::meeting();
+                g.meeting();
             }
         }
     }
