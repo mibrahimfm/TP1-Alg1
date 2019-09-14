@@ -42,6 +42,8 @@ int main(int argc, char** argv){
 
         Graph g(ages, relations, qtParticipants, qtRelations);
 
+        string cyclic = g.isCyclic() ? "true" : "false";
+        cout << cyclic << endl;
         for(int k = 0; k < qtInstructions; k++){
             input >> func;
             if(func == 'S'){

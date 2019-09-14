@@ -56,3 +56,36 @@ void Graph::youngestCommander(int subordinate){
 void Graph::meeting(){
     std::cout << "Meet Succ" << std::endl;
 }
+
+bool Graph::isCyclicUtil(int index, bool visited[], bool* recStack){
+    if(visited[index] == false){
+        visited[index] = true;
+        recStack[index] = true;
+
+        for(auto i : this->adjList[index]){
+            if(i.id == this->adjList[index][0].id)
+                continue;
+            if(!visited[i.id] && isCyclicUtil(i.id, visited, recStack))
+                return true;
+            else if (recStack[i.id]) 
+                return true; 
+        }
+    }
+    recStack[index] = false;  // remove the vertex from recursion stack 
+    return false;
+}
+
+bool Graph::isCyclic(){
+    int V = (int)this->adjList.size();
+    bool *visited = new bool[V]; 
+    bool *recStack = new bool[V]; 
+    for(int i = 0; i < V; i++) { 
+        visited[i] = false;
+        recStack[i] = false; 
+    }
+    for(int i = 0; i < V; i++){
+        if (isCyclicUtil(i, visited, recStack)) 
+            return true; 
+    }
+    return false; 
+}

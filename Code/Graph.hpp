@@ -13,7 +13,8 @@ struct Participant{
 
 class Graph{
 private:
-    void addEdge(Participant, Participant);  
+    void addEdge(Participant, Participant);
+    bool isCyclicUtil(int, bool[], bool*);
 public:
     vector<vector<Participant>> adjList;
     Graph(int*, int**, int, int);
@@ -21,6 +22,7 @@ public:
     void swap(int, int);
     void youngestCommander(int);
     void meeting();
+    bool isCyclic();
 };
 
 
