@@ -35,8 +35,27 @@ void Graph::printGraph() {
     } 
 } 
 
-void Graph::swap(int, int){
-    std::cout << "Swap Succ" << std::endl;
+void Graph::swap(int commander, int subordinate){
+    Participant p1 = this->adjList[commander][0];
+    Participant p2;
+    int i = 0;
+    for(auto x : this->adjList[commander]){
+        if(x.id == subordinate){
+            p2 = x;
+            this->adjList[commander].erase(this->adjList[commander].begin()+i);
+            this->adjList[subordinate].push_back(p1);
+            if(this->isCyclic()){
+                this->adjList[subordinate].pop_back();
+                this->adjList[commander].push_back(p2);
+            }
+            else{
+                std::cout << "S T" << std::endl;
+                return;
+            }
+        }
+        i++;
+    }
+    std::cout << "S N" << std::endl;
 }
 
 void Graph::youngestCommander(int subordinate){
