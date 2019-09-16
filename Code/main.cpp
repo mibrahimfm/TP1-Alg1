@@ -43,7 +43,6 @@ int main(int argc, char** argv){
         Graph g(ages, relations, qtParticipants, qtRelations);
 
 
-        g.printGraph();
         string cyclic = g.isCyclic() ? "true" : "false";
         cout << cyclic << endl;
         for(int k = 0; k < qtInstructions; k++){
@@ -51,6 +50,7 @@ int main(int argc, char** argv){
             if(func == 'S'){
                 input >> swap1 >> swap2;
                 g.swap(swap1, swap2);
+                g.printGraph();
             }
             else if(func == 'C'){
                 input >> ageCom;
@@ -60,7 +60,6 @@ int main(int argc, char** argv){
                 g.meeting();
             }
         }
-        g.printGraph();
     }
     else
         cout << "Erro ao abrir " << fileName << endl;

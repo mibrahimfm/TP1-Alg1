@@ -59,17 +59,24 @@ void Graph::swap(int commander, int subordinate){
 }
 
 void Graph::youngestCommander(int subordinate){
+    int youngest = INT32_MAX;
+    bool hasCommander = false;
     for (unsigned int v = 1; v < this->adjList.size(); ++v){  
         for (auto x : this->adjList[v]){
            if(x.id == this->adjList[v][0].id) //ignora o primeiro elemento, uma pessoa nao pode ser o proprio chefe
                 continue;
            if(x.id == subordinate){
-               std::cout << "C " << this->adjList[v][0].age << std::endl;
-               return;
+               hasCommander = true;
+               if(this->adjList[v][0].age < youngest){
+                   youngest = this->adjList[v][0].age;
+               }
            }
         }
     }
-    std::cout << "C *" << std::endl; 
+    if(hasCommander)
+        std::cout << "C " << youngest << std::endl;
+    else
+        std::cout << "C *" << std::endl; 
 }
 
 void Graph::meeting(){
