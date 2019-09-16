@@ -115,3 +115,20 @@ bool Graph::isCyclic(){
     }
     return false; 
 }
+
+vector<Participant> Graph::findCommanders(Participant p){
+
+    vector<Participant> commanders = vector<Participant>();
+    
+    for (unsigned int v = 1; v < this->adjList.size(); ++v){  
+        for (auto x : this->adjList[v]){
+           if(x.id == this->adjList[v][0].id) //ignora o primeiro elemento, uma pessoa nao pode ser o proprio chefe
+                continue;
+           if(x.id == p.id){
+                commanders.push_back(this->adjList[v][0]);
+                std::cout << this->adjList[v][0].id << " " << this->adjList[v][0].age << std::endl;
+           }
+        }
+    }
+    return commanders;
+}

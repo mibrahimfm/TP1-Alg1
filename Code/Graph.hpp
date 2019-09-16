@@ -15,6 +15,7 @@ class Graph{
 private:
     void addEdge(Participant, Participant);
     bool isCyclicUtil(int, bool[], bool*);
+    vector<Participant> findCommanders(Participant);
 public:
     vector<vector<Participant>> adjList;
     Graph(int*, int**, int, int);
