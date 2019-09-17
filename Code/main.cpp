@@ -40,8 +40,10 @@ int main(int argc, char** argv){
         for(int j = 0; j < qtRelations; j++)
             input >> relations[j][0] >> relations[j][1];
 
+        //Criando o grafo
         Graph g(ages, relations, qtParticipants, qtRelations);
 
+        //Percorrendo o resto do arquivo e verificado qual instrução está sendo passada
         for(int k = 0; k < qtInstructions; k++){
             input >> func;
             if(func == 'S'){
@@ -57,6 +59,7 @@ int main(int argc, char** argv){
             }
         }
     }
+    //Verificando se houve falha ao abrir o arquivo
     else
         cout << "Erro ao abrir " << fileName << endl;
 
