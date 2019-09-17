@@ -49,6 +49,10 @@ void Graph::swap(int commander, int subordinate){
                 this->adjList[commander].push_back(p2);
             }
             else{
+                vector<Participant> aux = this->findCommanders(p2);
+                for(auto x : aux){
+                    this->adjList[x.id].push_back(p1);
+                }
                 std::cout << "S T" << std::endl;
                 return;
             }
@@ -126,7 +130,6 @@ vector<Participant> Graph::findCommanders(Participant p){
                 continue;
            if(x.id == p.id){
                 commanders.push_back(this->adjList[v][0]);
-                std::cout << this->adjList[v][0].id << " " << this->adjList[v][0].age << std::endl;
            }
         }
     }
