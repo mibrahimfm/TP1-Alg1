@@ -29,7 +29,7 @@ void Graph::addEdge(Participant p1, Participant p2){
 }
 
 //Função auxiliar de teste que imprime o grafo(lista de adjacência de cada vértice)
-void Graph::printGraph() { 
+void Graph::PrintGraph() { 
     for (unsigned int v = 1; v < this->adjList.size(); v++){ 
         std::cout << "\n Adjacency list of vertex "
              << v << "\n head "; 
@@ -40,7 +40,7 @@ void Graph::printGraph() {
 } 
 
 //Função que realiza uma troca de comando entre duas pessoas
-void Graph::swap(int commander, int subordinate){
+void Graph::Swap(int commander, int subordinate){
     Participant p1 = this->adjList[commander][0]; 
     Participant p2;
     int i = 0;
@@ -68,7 +68,7 @@ void Graph::swap(int commander, int subordinate){
 }
 
 //Função para encontrar o comandante mais jovem de uma pessoa
-void Graph::youngestCommander(int subordinate){
+void Graph::YoungestCommander(int subordinate){
     int youngest = INT32_MAX; //Define a idade como valor máximo, para não correr riscos no if mais abaixo
     bool hasCommander = false; //Variável auxiliar para verificar se possui comandante
     for (unsigned int v = 1; v < this->adjList.size(); ++v){  
@@ -101,7 +101,7 @@ void Graph::meetingUtil(int index, bool visited[], stack<int>& Stack){
         Stack.push(index);
 }
 
-void Graph::meeting(){
+void Graph::Meeting(){
     stack<int> Stack;
     int V = (int)this->adjList.size();
     bool *visited = new bool[V]; 

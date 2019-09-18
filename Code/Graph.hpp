@@ -19,14 +19,14 @@ private:
     bool isCyclicUtil(int, bool[], bool*);
     vector<Participant> findCommanders(Participant);
     void meetingUtil(int, bool[], stack<int>&);
-public:
     vector<vector<Participant>> adjList;
-    Graph(int*, int**, int, int);
-    void printGraph();
-    void swap(int, int);
-    void youngestCommander(int);
-    void meeting();
     bool isCyclic();
+    public:
+    Graph(int*, int**, int, int);
+    void PrintGraph();
+    void Swap(int, int);
+    void YoungestCommander(int);
+    void Meeting();
 };
 
 

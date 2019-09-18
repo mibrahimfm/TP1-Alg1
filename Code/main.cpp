@@ -14,8 +14,7 @@ int main(int argc, char** argv){
     //Recebe o nome do arquivo passado como parâmetro para o programa
     string fileName = argv[1];
 
-    //Abre o arquivo com uma variável ifstream
-    ifstream input (fileName);
+    ifstream input(fileName);
 
     //Declarando variáveis para armazenar os valores lidos no arquivo
     int qtParticipants, qtRelations, qtInstructions, swap1, swap2, ageCom;
@@ -48,14 +47,14 @@ int main(int argc, char** argv){
             input >> func;
             if(func == 'S'){
                 input >> swap1 >> swap2;
-                g.swap(swap1, swap2);
+                g.Swap(swap1, swap2);
             }
             else if(func == 'C'){
                 input >> ageCom;
-                g.youngestCommander(ageCom);
+                g.YoungestCommander(ageCom);
             }
             else{
-                g.meeting();
+                g.Meeting();
             }
         }
     }
