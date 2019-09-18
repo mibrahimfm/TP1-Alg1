@@ -89,8 +89,36 @@ void Graph::youngestCommander(int subordinate){
         std::cout << "C *" << std::endl; 
 }
 
+void Graph::meetingUtil(int index, bool visited[], stack<int>& Stack){
+    visited[index] = true;
+
+    for(auto i : this->adjList[index]){
+        if(!visited[i.id])
+            meetingUtil(i.id, visited, Stack);
+    }
+
+    if(index != 0)
+        Stack.push(index);
+}
+
 void Graph::meeting(){
-    std::cout << "Meet Succ" << std::endl;
+    stack<int> Stack;
+    int V = (int)this->adjList.size();
+    bool *visited = new bool[V]; 
+
+    for(int i = 0; i < V; i++)
+        visited[i] = false;
+
+    for (int i = 0; i < V; i++){ 
+      if (!visited[i]) 
+        meetingUtil(i, visited, Stack); 
+    }
+    // Print contents of stack 
+    while (!Stack.empty()) { 
+        std::cout << Stack.top() << " "; 
+        Stack.pop(); 
+    }
+    std::cout << std::endl;
 }
 
 //Função auxiliar para verificar se o grafo possui ciclo
