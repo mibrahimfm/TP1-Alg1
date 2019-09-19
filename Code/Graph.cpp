@@ -44,6 +44,10 @@ void Graph::Swap(int commander, int subordinate){
     Participant p1 = this->adjList[commander][0]; 
     Participant p2;
     int i = 0;
+    if(commander == subordinate){
+        std::cout << "S N" << std::endl;
+        return;
+    }
     for(auto x : this->adjList[commander]){
         if(x.id == subordinate){ //Verifica se existe uma relação entre os dois e faz o troca
             p2 = x;
