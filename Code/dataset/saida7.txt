@@ -1,7 +1,7 @@
 S T
 C *
 S T
-C 27
+C 16
 S N
 S N
 C 19
