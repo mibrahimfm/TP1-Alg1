@@ -9,9 +9,9 @@ LIB		:= .
 LIBRARIES	:= 
 
 ifeq ($(OS),Windows_NT)
-EXECUTABLE	:= main.exe
+EXECUTABLE	:= tp1.exe
 else
-EXECUTABLE	:= main
+EXECUTABLE	:= tp1
 endif
 
 all: $(BIN)/$(EXECUTABLE)

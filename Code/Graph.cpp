@@ -19,6 +19,7 @@ Graph::Graph(int* ages, int** relations, int qtParticipants, int qtRelations){
             p2 = adjList[relations[j][1]][0];
         }
         addEdge(p1, p2);
+        vector<Participant> aux = this->findCommanders(p1);
     }
 
 }

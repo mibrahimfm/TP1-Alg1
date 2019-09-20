@@ -1,14 +1,14 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <chrono>
 #include "Graph.hpp"
 
+using namespace std::chrono;
 using std::string;
 using std::ifstream;
-using std::ofstream;
 using std::cout;
 using std::endl;
-using std::getline;
 
 int main(int argc, char** argv){
     //Recebe o nome do arquivo passado como parâmetro para o programa
@@ -21,6 +21,8 @@ int main(int argc, char** argv){
     int* ages;
     int** relations;
     char func;
+
+    auto start = high_resolution_clock::now();
 
     //Verifica se o arquivo está aberto para ler as entradas
     if (input.is_open()) {
@@ -62,4 +64,10 @@ int main(int argc, char** argv){
     else
         cout << "Erro ao abrir " << fileName << endl;
 
+    auto end = high_resolution_clock::now();
+
+    auto duration = duration_cast<microseconds>(end - start); 
+
+    cout << "Time taken by function: "
+         << duration.count() << " microseconds" << endl; 
 }
